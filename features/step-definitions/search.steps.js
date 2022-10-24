@@ -1,5 +1,7 @@
 const { Given, When, Then } = require('@wdio/cucumber-framework');
-const MainPage = require('./../pageobjects/main.page');
+const MainPage = require('../pageobjects/main.page');
+const EventPage = require('../pageobjects/event.page');
+
 const Utils = require('./utils')
 
 
@@ -13,24 +15,23 @@ Given('the user is on main page', async () => {
   
 When(/^the user enters (\w+) in the search field$/, async (keyWord) => {
     await Utils.setValue(MainPage.inputSearch, keyWord)
-    browser.pause(2000)
-})  
+ })  
 
 Then(/^the results include (\w+)$/, async (keyWord) =>{
-    const result = await $('#site-search-item-0').$('h4')
+    const result = Utils.getChildElement(MainPage.searchResultFirst, MainPage.header4)
     await Utils.saveScreenshot()
-    console.log(result)
     await expect(result).toHaveTextContaining(keyWord)
+
 
 })
 
 
 When(/^the user clicks the first result with (\w+)$/, async (search) =>{
-    const result = await $('#site-search-item-0').$('h4')
+    const result = await $(MainPage.searchResultFirst)
     await Utils.saveScreenshot()
     await expect(result).toHaveTextContaining(search)
-    await $('#site-search-item-0').click()
-    await Utils.waitForElement('.e1gtd2336')
+    await Utils.click(MainPage.searchResultFirst)
+    await Utils.waitForElement(`h1*=${search}`)
 })
 
 Then(/^the result page is opened and url contains (\w+)$/, async (search) =>{
@@ -47,8 +48,8 @@ When('the user enters % in the search field', async () => {
 })  
 
 Then('the "No results found" error message should be shown', async () =>{
-    const result = await $('.css-12mo4ps')
+    const errorHeader = await $(MainPage.notFoundHeader)
     await Utils.saveScreenshot()
-    expect(result).toHaveTextContaining('No results found')
+    expect(errorHeader).toHaveTextContaining('No results found')
 })
 

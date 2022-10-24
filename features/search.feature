@@ -10,6 +10,8 @@ Feature: Search feature
 
     | keyWord |
     | Tame |
+    | Festival|
+    | ADE |
 
     Scenario Outline: When the user clicks the result they should be navigated to the result page
         Given the user is on main page
@@ -21,6 +23,7 @@ Feature: Search feature
 
     | search |
     |Loveland|
+    |Killers |
 
     Scenario: Placeholder text should be displayed in search input field
         Given the user is on main page

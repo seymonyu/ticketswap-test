@@ -20,6 +20,10 @@ class Utils {
     return $(locator).getValue()
   }
 
+  async getChildElement(locator,locatorChild){
+    return $(locator).$(locatorChild);
+  }
+
   async click(locator) {
     await $(locator).click();
   }
