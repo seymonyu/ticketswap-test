@@ -1,9 +1,5 @@
 Feature: Search feature
 
-    Background: User is Logged In
-        Given the user is on the login page
-        When the user submits username and password
-        Then the user is logged in
 
     Scenario Outline: As a user, I can perform a search
         Given the user is on main page

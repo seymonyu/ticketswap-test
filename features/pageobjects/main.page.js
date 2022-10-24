@@ -5,9 +5,10 @@ class MainPage {
    
     this.inputSearch = '#site-search-input';
     this.searchResultFirst = '#site-search-item-0'  
+    this.userAvatar = 'aria/Avatar'
+    this.loginGoogle = 'button*=Google'
    
-   
-    return this.searchResultFirst
+    return this.searchResultFirst, this.userAvatar, this.inputSearch
   }
 }
 
