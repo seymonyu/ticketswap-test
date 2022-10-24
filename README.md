@@ -13,4 +13,15 @@ Install the dependencies;
 
 npm install
 ```
-When the [webdriverio starter toolkit](https://github.com/webdriverio/create-wdio/blob/main/README.md) prompt is shown, choose following options;
+
+
+## TEST RUN
+
+Run the tests;
+
+```bash
+npx run wdio
+```
+
+To run only a selection of the tests cucumber flags can be used. See [cucumber-js documentation](https://cucumber.io/docs/installation/javascript/)
+
